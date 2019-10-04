@@ -57,7 +57,7 @@ export class MyComponent {
    */
   async getPromociones(): Promise<IPromociones[]>{
     try {
-      const response = await fetch("http://asback.allseasons.tur.ar/api/prueba");
+      const response = await fetch("https://asback.allseasons.tur.ar/api/prueba");
       const json = await response.json();
       return json.original;
     } catch (error) {
