@@ -1,0 +1,78 @@
+.fil-bancos{
+  object-fit: contain;
+}
+
+.selected{
+  --ion-background-color: #e7f3d4;
+}
+
+.sep-tip-servicio
+{
+  border: 0.5px solid rgb(161, 160, 160); 
+  border-radius: 300px/10px; 
+  height: 0px; 
+  text-align: center;
+}
+
+.nota-legal
+{
+  border: 1px solid #c7c3c7;
+  box-sizing: content-box;
+  margin-top: 8px;
+  padding: 0px 15px 0px 15px;
+  font-size: 12px;
+  background: rgb(213, 221, 248);  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #E2E2E2, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #E2E2E2, rgb(218, 225, 250)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.detalle{
+  vertical-align: middle;
+  font-size: 0.9em;
+}
+
+.features-table {
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-shadow: 0 1px 0 #fff;
+  color: #2a2a2a;
+  background: #fafafa;  
+  /* background-image: linear-gradient(top, #fff, #eaeaea, #fff); */
+  background-image: linear-gradient(to top, #fff, #eaeaea, #fff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.features-table td {
+  height: 25px;
+  line-height: 25px;
+  padding: 0 20px;
+  border-bottom: 1px solid #cdcdcd;
+  box-shadow: 0 1px 0 white;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.features-table thead td {
+  font: bold 1em 'trebuchet MS', 'Lucida Sans', Arial;  
+}
+
+.features-table td:nth-child(1) {
+  background: #e7f3d4;  
+  background: rgba(184,243,85,0.3);
+}
+
+.features-table td:nth-child(2)
+{
+  background: #efefef;
+  background: rgba(171, 207, 241, 0.15);
+  border-right: 1px solid white;
+}
+
+.features-table td:nth-child(3) 
+{
+  background: #dad9c5;
+  background: rgba(206, 203, 63, 0.15);
+  border-right: 1px solid white;
+}
+
