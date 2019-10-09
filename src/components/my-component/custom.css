@@ -76,3 +76,11 @@
   border-right: 1px solid white;
 }
 
+.ver-oculto {
+  display: none;
+}
+
+.ver {
+  display: block;
+}
+

@@ -42,6 +42,8 @@ export class MyComponent {
 
   @Element() el: HTMLElement;
 
+  @State() active: boolean = true;
+
   @State() promociones: IPromociones[] = [];
   
   @State() bancos: IBancos[] = [];
@@ -61,7 +63,7 @@ export class MyComponent {
       const json = await response.json();
       return json.original;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 
@@ -73,7 +75,6 @@ export class MyComponent {
   getItemsServicios(rowP){
     const rowPServicios = this.getUnicos(rowP,'tipo_serv_id').map( item => {
       const { tipo_serv_id, tipo_serv_nombre, alta, vencimiento, nota_legal } = item;
-
       return { tipo_serv_id, tipo_serv_nombre, nota_legal,
         alta: alta.replace(/(\d+)\D+(\d+)\D+(\d+)/g, "$3-$2-$1"), 
         vencimiento: vencimiento.replace(/(\d+)\D+(\d+)\D+(\d+)/g, "$3-$2-$1"), 
@@ -91,7 +92,7 @@ export class MyComponent {
         row: rowTarjeta.filter(e => e.card_id == card_id).map( i => {
           const { cta_cuotas} = i;
           
-          return { cta_cuotas, 
+          return { cta_cuotas,
             cta_interes: this.MontoEs(i.cta_interes),
             cftna: this.MontoEs(i.cftna)
           };
@@ -127,6 +128,180 @@ export class MyComponent {
         item.classList.add("selected");
       }
     });
+
+    // verificar si existe
+    // const detalle = this.el.shadowRoot.getElementById('body-promo');
+
+    const pruebaElement = this.el.shadowRoot.querySelector(".lis-bancos .body-promo");
+
+    // Eliminar el elemento y si es el mismo lo cierra
+    if (pruebaElement) {
+      // console.log("Elemento seleccionado");
+      // console.log(pruebaElement);
+      pruebaElement.remove();
+
+      
+      // console.log('Deberia de elimiar');
+      
+      // const valAttribute = detalle.getAttribute("bancoid");
+      // console.log("El atributo es: ");
+
+      
+      // console.log(valAttribute);
+      
+      // // detalle.remove();
+      // if (valAttribute == idBanco) return;
+    }
+
+
+    // // var x = document.getElementById("myAnchor").getAttribute("target");
+    // const valAttribute = 
+    // console.log('detalle');
+    // console.log(detalle);
+
+    // const atributo = detalle.getAttribute('bancoid');
+    
+    // if(atributo){
+    //   console.log('si existe, es el mismo');
+    // }else{
+    //   console.log('no es otro');
+    // }
+   
+
+    // const idSeleccionado = document.getElementById(`id-${idBanco}`);
+    // const idSeleccionado : string = `id-${idBanco}`;
+    // const element = document.getElementById(`id-${idBanco}`);
+    // const el: HTMLElement = document.getElementById(`id-${idBanco}`);
+
+    const ancho = screen.width;
+    // console.log("el tamaño es: ", ancho);
+    // console.log(idBanco);
+
+    if (ancho <= 767){
+      this.active = false;
+      // const gralPromo = this.el.shadowRoot.querySelector("gral-promo");
+      // gralPromo.style.visibility = 'hidden';
+
+      // document.querySelectorAll("div#tabs" + tabId + "> div.page")[0].style.display = 'none'; 
+      // const gralPromo = this.el.shadowRoot.querySelectorAll('.gral-promo')
+      // gralPromo.forEach(function(item) {
+      //   item.
+      // });
+
+      // var formElement = this.el.shadowRoot.getElementById('gral-promo');
+      // formElement.style.display='block';
+
+      // const divPrueba = this.el.shadowRoot.querySelector('#gral-promo');
+      // const shadowRoot = div.attachShadow ({mode : 'open'});
+      // const shadowRoot = div.attachShadow();
+      // console.assert (shadowRoot.parentElement === null);
+      // console.assert (shadowRoot.parentNode === null);
+      // shadowRoot.host.parentElement.style.backgroundColor = 'red';
+
+
+      // divPrueba.host.parentElement.style.visibility = 'none';
+
+      // divPrueba.shadowRoot.host.parentElement.style.visibility = 'none';
+
+
+
+
+      // const liElems = this.el.shadowRoot.querySelectorAll('.gral-promo');
+      // liElems.forEach(element => {
+      //   let s = window.getComputedStyle(element);
+      //   s.display = 'none';
+      // });
+
+      // const filtered = [].filter.call(liElems, function(el) {
+      //   let style = window.getComputedStyle(el);
+      //   return (style.display !== 'none')
+      // });
+
+      // console.log('Prueba');
+      // console.log(filtered);
+      
+      
+      
+      // console.log("Es pequeña la pantalla debemos insertar debajo del item seleccionado");
+      // console.log("El id seleccionado es: ");
+      // console.log(el);
+      // const d1 = document.getElementById(`id-${idBanco}`);
+      // const d1 = document.getElementById('id-17');
+      // console.log(d1);
+      
+      // d1.insertAdjacentHTML('beforeend', '<div id="two">two</div>');
+      // insertBefore
+      // el.insertBefore()
+
+      // const newNode = document.createElement("span");
+
+      // const x = document.getElementById(`id-${idBanco}`).parentElement.nodeName;
+
+      // console.log(el.ELEMENT_NODE);
+      // document.getElementById("demo").innerHTML = x;
+
+      // const newDetalle = `
+      //   <ion-thumbnail slot="start">
+      //       <h2>prueba debajo</h2>    
+      //   </ion-thumbnail>
+      //   <ion-label>
+      //     <h2>prueba debajo</h2>
+      //   </ion-label>`;
+
+      //newDetalleClon.id = 'sdf';
+
+      // const test3 = document.querySelector("#test1").cloneNode(true);
+      // test3.setAttribute("id", "test3");
+      // test3.querySelector("#test2").setAttribute("id", "test4");
+      // console.log(test3);
+
+      // var clone = this.el.shadowRoot.getElementById('test').cloneNode(true);
+      // clone.querySelector('.child').innerHTML = "TEST 2"
+      // clone.setAttribute('id', 123)
+      // document.body.appendChild(clone)
+
+      // var test3 = document.querySelector("#test1").cloneNode(true);
+      // test3.setAttribute("id", "test3");
+      // test3.querySelector("#test2").setAttribute("id", "test4");
+      // console.log(test3);
+
+      // newDetalleClon
+        // newDetalleClon.querySelectorAll('[id="test0"]')[0].id = "new-id";
+
+        // tableRow.parentNode.insertBefore(tableRowClone, tableRow.nextSibling);
+
+      // // Caso 1 Funciona
+      const bodyPromoOriginal = this.el.shadowRoot.getElementById("body-promo");
+      const newDetalleClon = bodyPromoOriginal.cloneNode(true);
+      const sp2 = this.el.shadowRoot.getElementById(`id-${idBanco}`);
+      // sp2.appendChild(newDetalleClon);
+      this.insertAfter(newDetalleClon, sp2);
+
+
+
+
+      // Caso 2 funciona
+      // var newNode = document.createElement(`ion-item`);
+      // newNode.setAttribute('id', 'ver-promo');
+      // newNode.setAttribute('bancoid', `${idBanco}`);
+      // const sp2 = this.el.shadowRoot.getElementById(`id-${idBanco}`);
+      // sp2.appendChild(newDetalleClon);
+      // this.insertAfter(newNode , sp2);
+      
+      // const parentDiv = sp2.parentNode;
+      // parentDiv.appendChild(newNode);
+      // parentDiv.insertBefore( newNode, sp2);
+      // this.insertAfter(newNode, sp2);
+      // detalle.innerHTML(newDetalle);
+      // const newdetalle = this.el.shadowRoot.getElementById('detalle-promo');
+      // newdetalle.innerHTML = newDetalle;
+    }else{
+      this.active = true;
+    }
+  }
+
+  insertAfter(newNode, referenceNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
   }
 
   getUnicos(arr, key) {
@@ -150,14 +325,12 @@ export class MyComponent {
   componentDidLoad(){
     const idBanco = this.bancos[0].bco_id;
     const selectedAll = this.el.shadowRoot.querySelectorAll('.cls-bancos');
-
     selectedAll.forEach(function(item) {
       if(item.classList.contains(`item-${idBanco}`)){
         item.classList.add("selected");
       }
     });
   }
-
 
   render() {
     return (
@@ -166,13 +339,13 @@ export class MyComponent {
           <ion-content class="ion-padding"> */}
             <ion-grid>
               <ion-row>
-                <ion-col size-xs="12" size-md="4" size-lg="3">
+                <ion-col size-xs="12" size-md="4" size-lg="3" class="lis-bancos">
                   <ion-list-header>
                     <ion-title>Entidades financieras</ion-title>
                   </ion-list-header>
                   
                   {this.bancos.map(item => (
-                    <ion-item class={`cls-bancos item-${ item.bco_id }`} onClick={() => this.clickbanco(item.bco_id)}>
+                    <ion-item id={`id-${ item.bco_id }`} class={`cls-bancos item-${ item.bco_id }`} onClick={() => this.clickbanco(item.bco_id)}>
                       <ion-thumbnail slot="start">
                           <img class="fil-bancos" src={item.bco_img}></img>
                       </ion-thumbnail>
@@ -182,74 +355,76 @@ export class MyComponent {
                     </ion-item>
                   ))}
                 </ion-col >
+                  
 
-                <ion-col size-xs="12" size-md="8" size-lg="9">
-
-                  {this.promocionesAll.map(item => (
-                    <section>
-                      {
-                        item.row.map(y => (
-                          <div class="list card">
-                            <br/>
-                            <div class="item item-divider">
-                              <h2>Promociones que aplica a { y.tipo_serv_nombre }</h2>
-                              {/* <h1>Promociones que aplica a { item.tipo_serv_nombre }</h1> */}
-                            </div>
-
-                            {
-                              y.row.map( e => (
-                                <div>
-                                  <ion-item>
-                                    <ion-thumbnail slot="start">
-                                        <img class="fil-bancos" src={e.img_card}></img>
-                                    </ion-thumbnail>
-                                    <ion-label>
-                                      
-                                      <p>Aplica solo para las tarjetas {e.card_nombre}</p>
-                                      <p>{y.alta} / {y.vencimiento}</p>  
-                                    </ion-label>
-                                  </ion-item>
-                                  
-                                  <section>
-                                    <table class="features-table">
-                                      <thead>
-                                        <tr>
-                                          <td>Cuotas</td>
-                                          <td>Interes %</td>
-                                          <td>CFTNA</td>
-                                        </tr>
-                                      </thead>
-                                      
-                                      <tbody>
-                                        {
-                                          e.row.map(t => (
-                                            <tr>
-                                              <td class="detalle">{t.cta_cuotas}</td>
-                                              <td class="detalle">{t.cta_interes}</td>
-                                              <td class="detalle">{t.cftna}</td>
-                                            </tr>
-                                          ))
-                                        }
-                                      </tbody>
-                                    </table>
-                                  </section>
-                                  <br/>
+                  {/* class={(this.active ? 'ver ' : 'ver-oculto ')} */}
+                  {/* class="gral-promo" */}
+                  <ion-col class={(this.active ? 'ver ' : 'ver-oculto ')} size-xs="12" size-md="8" size-lg="9">
+                      {this.promocionesAll.map(item => (
+                        <section>
+                          {
+                            item.row.map(y => (
+                              <div id="body-promo" class="body-promo list card">
+                                <br/>
+                                <div class="item item-divider">
+                                  <h2>Promociones que aplica a { y.tipo_serv_nombre }</h2>
+                                  {/* <h1>Promociones que aplica a { item.tipo_serv_nombre }</h1> */}
                                 </div>
-                              ))
-                            }
 
-                            <div class="item item-body nota-legal">
-                              <p>{y.nota_legal}
-                              </p>
-                            </div>
-                            <hr class="sep-tip-servicio"/>
+                                {
+                                  y.row.map( e => (
+                                    <div>
+                                      <ion-item>
+                                        <ion-thumbnail slot="start">
+                                            <img class="fil-bancos" src={e.img_card}></img>
+                                        </ion-thumbnail>
+                                        <ion-label>
+                                          
+                                          <p>Aplica solo para las tarjetas {e.card_nombre}</p>
+                                          <p>{y.alta} / {y.vencimiento}</p>  
+                                        </ion-label>
+                                      </ion-item>
+                                      
+                                      <section>
+                                        <table class="features-table">
+                                          <thead>
+                                            <tr>
+                                              <td>Cuotas</td>
+                                              <td>Interes %</td>
+                                              <td>CFTNA</td>
+                                            </tr>
+                                          </thead>
+                                          
+                                          <tbody>
+                                            {
+                                              e.row.map(t => (
+                                                <tr>
+                                                  <td class="detalle">{t.cta_cuotas}</td>
+                                                  <td class="detalle">{t.cta_interes}</td>
+                                                  <td class="detalle">{t.cftna}</td>
+                                                </tr>
+                                              ))
+                                            }
+                                          </tbody>
+                                        </table>
+                                      </section>
+                                      <br/>
+                                    </div>
+                                  ))
+                                }
 
-                          </div> 
-                        ))
-                      }
-                    </section>
-                  ))}
-                </ion-col>
+                                <div class="item item-body nota-legal">
+                                  <p>{y.nota_legal}
+                                  </p>
+                                </div>
+                                <hr class="sep-tip-servicio"/>
+
+                              </div> 
+                            ))
+                          }
+                        </section>
+                      ))}
+                  </ion-col>
               </ion-row>
             </ion-grid>
           {/* </ion-content>
