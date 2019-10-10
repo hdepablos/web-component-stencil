@@ -193,7 +193,7 @@ export class MyComponent {
               <ion-list-header>
                 <ion-title>Entidades financieras</ion-title>
               </ion-list-header>
-              
+
               {this.bancos.map(item => (
                 <ion-item id={`id-${item.bco_id}`} class={`pointer cls-bancos item-${item.bco_id}`} onClick={() => this.clickbanco(item.bco_id)}>
                   <ion-thumbnail slot="start">
@@ -227,7 +227,7 @@ export class MyComponent {
 
                                 <ion-label>
                                   <p>Aplica solo para las tarjetas {e.card_nombre}</p>
-                                  <p>{y.alta} / {y.vencimiento}</p>
+                                  <p>Vigente hasta {y.vencimiento}</p>
                                 </ion-label>
                               </ion-item>
 
