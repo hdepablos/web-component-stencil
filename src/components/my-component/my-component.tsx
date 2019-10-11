@@ -130,7 +130,7 @@ export class MyComponent {
   insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
   }
-
+  // asldfkjalskdjflkajsdf
   getUnicos(arr, key) {
     let lookup = new Set();
     return arr.filter(obj => !lookup.has(obj[key]) && lookup.add(obj[key]));
@@ -162,10 +162,10 @@ export class MyComponent {
   componentDidRender() {
     // veriifcar si se esta visualizando en el cel de la contrario se sale de la function
     if (!(screen.width <= 767)) return;
-    
+
     // verificar si existe
     const pruebaElement = this.el.shadowRoot.querySelector(".lis-bancos .body-promo");
-    
+
     // Varificar si existe el elemento
     if (pruebaElement) {
       // Por default elimina el element
@@ -177,7 +177,7 @@ export class MyComponent {
       if(classContain) return;
     }
 
-    // Pintar el nuevo elemento seleccionado 
+    // Pintar el nuevo elemento seleccionado
     const bodyPromoOriginal = this.el.shadowRoot.getElementById("body-promo");
     const newDetalleClon = bodyPromoOriginal.cloneNode(true);
     const sp2 = this.el.shadowRoot.getElementById(`id-${this.idBanco}`);
@@ -207,69 +207,71 @@ export class MyComponent {
             </ion-col>
 
             <ion-col class={`${(this.active ? 'ver ' : 'ver-oculto ')}`} size-xs="12" size-md="8" size-lg="9">
-              {this.promocionesAll.map(item => (
-                <section>
-                  {
-                    item.row.map(y => (
-                      <div id="body-promo" class={`item-${this.idBanco} body-promo list card`}>
-                        <br />
-                        <div class="item item-divider">
-                          <h2>Promociones que aplica a {y.tipo_serv_nombre}</h2>
+              <div id="body-promo" class={`item-${this.idBanco} body-promo`}>
+                {this.promocionesAll.map(item => (
+                  <section>
+                    {
+                      item.row.map(y => (
+                        <div class={`list card`}>
+                          <br />
+                          <div class="item item-divider">
+                            <h2>Promociones que aplica a {y.tipo_serv_nombre}</h2>
+                          </div>
+
+                          {
+                            y.row.map(e => (
+                              <div>
+                                <ion-item>
+                                  <ion-thumbnail slot="start">
+                                    <img class="fil-bancos" src={e.img_card}></img>
+                                  </ion-thumbnail>
+
+                                  <ion-label>
+                                    <p>Aplica solo para las tarjetas {e.card_nombre}</p>
+                                    <p>Vigente hasta {y.vencimiento}</p>
+                                  </ion-label>
+                                </ion-item>
+
+                                <section>
+                                  <table class="features-table">
+                                    <thead>
+                                      <tr>
+                                        <td>Cuotas</td>
+                                        <td>Interes %</td>
+                                        <td>CFTNA</td>
+                                      </tr>
+                                    </thead>
+
+                                    <tbody>
+                                      {
+                                        e.row.map(t => (
+                                          <tr>
+                                            <td class="detalle">{t.cta_cuotas}</td>
+                                            <td class="detalle">{t.cta_interes}</td>
+                                            <td class="detalle">{t.cftna}</td>
+                                          </tr>
+                                        ))
+                                      }
+                                    </tbody>
+                                  </table>
+                                </section>
+                                <br />
+                              </div>
+                            ))
+                          }
+
+                          <div class="item item-body nota-legal">
+                            <p>{y.nota_legal}
+                            </p>
+                          </div>
+                          <hr class="sep-tip-servicio" />
+
                         </div>
-
-                        {
-                          y.row.map(e => (
-                            <div>
-                              <ion-item>
-                                <ion-thumbnail slot="start">
-                                  <img class="fil-bancos" src={e.img_card}></img>
-                                </ion-thumbnail>
-
-                                <ion-label>
-                                  <p>Aplica solo para las tarjetas {e.card_nombre}</p>
-                                  <p>Vigente hasta {y.vencimiento}</p>
-                                </ion-label>
-                              </ion-item>
-
-                              <section>
-                                <table class="features-table">
-                                  <thead>
-                                    <tr>
-                                      <td>Cuotas</td>
-                                      <td>Interes %</td>
-                                      <td>CFTNA</td>
-                                    </tr>
-                                  </thead>
-
-                                  <tbody>
-                                    {
-                                      e.row.map(t => (
-                                        <tr>
-                                          <td class="detalle">{t.cta_cuotas}</td>
-                                          <td class="detalle">{t.cta_interes}</td>
-                                          <td class="detalle">{t.cftna}</td>
-                                        </tr>
-                                      ))
-                                    }
-                                  </tbody>
-                                </table>
-                              </section>
-                              <br />
-                            </div>
-                          ))
-                        }
-
-                        <div class="item item-body nota-legal">
-                          <p>{y.nota_legal}
-                          </p>
-                        </div>
-                        <hr class="sep-tip-servicio" />
-
-                      </div>
-                    ))
-                  }
-                </section>
-              ))}
+                      ))
+                    }
+                  </section>
+                ))}
+              </div>
             </ion-col>
           </ion-row>
         </ion-grid>
